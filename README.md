@@ -6,10 +6,10 @@ required to build this project:
 * windows 10
 
 Control:
------------------------------
-left-right-up | move
+
+a-d-w         | left-right-up
 j             | melee attack
 k             | range attack
 esc           | pause
------------------------------
+
 
