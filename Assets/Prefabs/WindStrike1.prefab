@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1929514986505195252}
   - component: {fileID: 1929514986505195249}
   - component: {fileID: 1929514986505195248}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WindStrike1
-  m_TagString: Projectile
+  m_TagString: Projectile1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

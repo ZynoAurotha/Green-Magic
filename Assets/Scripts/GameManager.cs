@@ -22,14 +22,16 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            OnPauseGame();
+
+            SceneManager.LoadScene(2);
         }
+
         if(_gameIsOver)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Time.timeScale = 1f;
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
             }
         }      
     }

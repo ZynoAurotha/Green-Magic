@@ -25,17 +25,20 @@ public class Leafy1 : Player1
     [SerializeField] private AudioSource _deadSound;
     protected override void Start()
     {
-        Physics2D.IgnoreLayerCollision(9,9);
+        //Physics2D.IgnoreLayerCollision(9,9);
         GameObject healthBar = GameObject.FindGameObjectWithTag("HealthBar1");
         healthBar.GetComponent<Slider>().maxValue = _maxHealth;
         _currentHealth = _maxHealth;
         healthBar.GetComponent<Slider>().value = _currentHealth;
+        // Debug.Log("player1" + PlayerInfoTable.getPlayer1());
+        // Debug.Log("player1icon" + IconTable.getCharIconArray()[0]);
     }
  
     protected override void FixedUpdate()
     {    
         CharCollisionInfo.OnReset();          
         OnRaycastInitialization();
+        //OnStartCharacterState();
         OnFlip();
         base.FixedUpdate();
         OnCharacterMove(); 
@@ -46,45 +49,6 @@ public class Leafy1 : Player1
     {
         base.OnRaycastInitialization();
     }
-
-    // private void OnCharacterAction()
-    // {     
-    //     Vector2 direction = PlayerInput;
-        
-    //     if(PlayerInput.x == 1 || PlayerInput.x == -1 || PlayerInput.x == 0)   //walking action
-    //     {
-    //         OnWalk(direction);
-    //         // if(PlayerInput.x == 0 && CharCollisionInfo.Below)
-    //         // {
-    //         //     Anim.SetInteger("animationState",(int)CharStatus.Idle);
-    //         // }
-    //         // if(PlayerInput.x == 1 && CharCollisionInfo.Below)
-    //         // {
-    //         //     Anim.SetInteger("animationState",(int)CharStatus.WalkForward);
-    //         // }
-    //         Anim.SetInteger("animationState",(int)CharStatus.WalkForward);
-    //     }
-    //     if (PlayerInput.y == 1 || PlayerInput.y == 0)   //jumping action
-    //     {
-    //         if(CharCollisionInfo.Below && PlayerInput.y == 0)   //problem is here
-    //         {     
-    //             direction.y = 0;
-    //             OnJump(direction);
-    //             Anim.SetInteger("animationState",(int)CharStatus.Idle);
-    //         }        
-    //         if(PlayerInput.y == 1)
-    //         {    
-    //             direction.y = 1;
-    //             OnJump(direction);   
-    //             Anim.SetInteger("animationState",(int)CharStatus.JumpForward);         
-    //             if(CharCollisionInfo.Below)
-    //             {
-    //                 Anim.SetInteger("animationState",(int)CharStatus.Idle); 
-    //             }                        
-    //         }  
-    //     }
-    //     transform.Translate(CharVelocity * Time.fixedDeltaTime);
-    // }
 
     private void OnCharacterMove()
     {     
@@ -189,7 +153,7 @@ public class Leafy1 : Player1
     private void OnFlip()
     {
         //Debug.Log(transform.position);
-        GameObject leafy2 = GameObject.FindGameObjectWithTag("Leafy2");
+        GameObject leafy2 = GameObject.FindGameObjectWithTag("Character2");
         Vector3 leafy1Scale = transform.localScale;
         //leafy1Scale.x = ((leafy2.transform.position.x - transform.position.x) < 0 && !_toTheRightLeafy2) ? (leafy1Scale.x * -1) : (leafy1Scale.x * 1);
         if ((leafy2.transform.position.x - transform.position.x) < 0 && _facingRight1)
@@ -252,10 +216,16 @@ public class Leafy1 : Player1
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.tag == "Leafy2")
+        if(coll.gameObject.tag == "Character2")
         {
-            coll.GetComponent<Leafy2>().OnTakeDamage(10);
+            if(GameObject.Find("Leafy2") != null)
+            {
+                coll.GetComponent<Leafy2>().OnTakeDamage(10);
+            }   
+            else if(GameObject.Find("LeafyBOT") != null)
+            {
+                coll.GetComponent<LeafyBOT>().OnTakeDamage(10);
+            }              
         }
     }
-
 }

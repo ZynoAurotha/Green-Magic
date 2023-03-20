@@ -11,9 +11,9 @@ public class WindStrikeProjectile1 : MonoBehaviour
 
     protected void Start()
     {
-        if(GameObject.FindGameObjectWithTag("Leafy2") != null)
+        if(GameObject.FindGameObjectWithTag("Character2") != null)
         {
-            GameObject leafy2 = GameObject.FindGameObjectWithTag("Leafy2");
+            GameObject leafy2 = GameObject.FindGameObjectWithTag("Character2");
             _windStrikeDir = ((leafy2.transform.position.x - transform.position.x) > 0) ? Vector2.right : Vector2.left;
         }    
     }
@@ -24,9 +24,16 @@ public class WindStrikeProjectile1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.tag == "Leafy2")
+        if(coll.gameObject.tag == "Character2")
         {
-            coll.GetComponent<Leafy2>().OnTakeDamage(5);
+            if(GameObject.Find("Leafy2") != null)
+            {
+                coll.GetComponent<Leafy2>().OnTakeDamage(5);
+            }
+            if(GameObject.Find("LeafyBOT") != null)
+            {
+                coll.GetComponent<LeafyBOT>().OnTakeDamage(5);
+            }                
         }
     }
 }

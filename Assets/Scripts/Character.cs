@@ -15,13 +15,10 @@ public class Character : MonoBehaviour
     protected Rigidbody2D CharRidgidbody2D;   
     [SerializeField] protected float CharMoveSpeed;
     [SerializeField] protected float CharJumpHeight;
-    [SerializeField] protected float CharJumpTime;
-    protected float CharJumpVelocity;
-    protected Vector2 Player1Input; 
-    protected Vector2 Player2Input; 
+    protected Vector2 Player1Input;
+    protected Vector2 Player2Input;
     protected Vector2 direction;
     protected Vector2 CharVelocity;
-
     protected Animator Anim;
     protected virtual void Awake()
     {
@@ -32,10 +29,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Start(){}
 
-    protected virtual void FixedUpdate()
-    {
-        
-    }
+    protected virtual void FixedUpdate(){}
 
     protected virtual void OnRaycastInitialization()
     {
@@ -59,6 +53,7 @@ public class Character : MonoBehaviour
         _rayCastOrigin.BottomLeft = new Vector2(bounds.min.x,bounds.min.y);
         _rayCastOrigin.BottomRight = new Vector2(bounds.max.x,bounds.min.y);
     }
+
 
     private void OnCalculateRaySpacing()
     {
@@ -97,7 +92,6 @@ public class Character : MonoBehaviour
         RangeAttack = 7,
         TakeDamage = 8,
         Dead = 9
-
     }
 }
 

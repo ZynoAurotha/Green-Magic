@@ -43,46 +43,7 @@ public class Leafy2 : Player2
     {
         base.OnRaycastInitialization();
     }
-
-    // private void OnCharacterAction()
-    // {     
-    //     Vector2 direction = PlayerInput;
-        
-    //     if(PlayerInput.x == 1 || PlayerInput.x == -1 || PlayerInput.x == 0)   //walking action
-    //     {
-    //         OnWalk(direction);
-    //         // if(PlayerInput.x == 0 && CharCollisionInfo.Below)
-    //         // {
-    //         //     Anim.SetInteger("animationState",(int)CharStatus.Idle);
-    //         // }
-    //         // if(PlayerInput.x == 1 && CharCollisionInfo.Below)
-    //         // {
-    //         //     Anim.SetInteger("animationState",(int)CharStatus.WalkForward);
-    //         // }
-    //         Anim.SetInteger("animationState",(int)CharStatus.WalkForward);
-    //     }
-    //     if (PlayerInput.y == 1 || PlayerInput.y == 0)   //jumping action
-    //     {
-    //         if(CharCollisionInfo.Below && PlayerInput.y == 0)   //problem is here
-    //         {     
-    //             direction.y = 0;
-    //             OnJump(direction);
-    //             Anim.SetInteger("animationState",(int)CharStatus.Idle);
-    //         }        
-    //         if(PlayerInput.y == 1)
-    //         {    
-    //             direction.y = 1;
-    //             OnJump(direction);   
-    //             Anim.SetInteger("animationState",(int)CharStatus.JumpForward);         
-    //             if(CharCollisionInfo.Below)
-    //             {
-    //                 Anim.SetInteger("animationState",(int)CharStatus.Idle); 
-    //             }                        
-    //         }  
-    //     }
-    //     transform.Translate(CharVelocity * Time.fixedDeltaTime);
-    // }
-
+   
     private void OnCharacterMove()
     {     
         //stand state
@@ -186,7 +147,7 @@ public class Leafy2 : Player2
     private void OnFlip()
     {
         //Debug.Log(transform.position);
-        GameObject leafy1 = GameObject.FindGameObjectWithTag("Leafy1");
+        GameObject leafy1 = GameObject.FindGameObjectWithTag("Character1");
         Vector3 leafy1Scale = transform.localScale;
         //leafy1Scale.x = ((leafy2.transform.position.x - transform.position.x) < 0 && !_toTheLeftLeafy2) ? (leafy1Scale.x * -1) : (leafy1Scale.x * 1);
         if ((leafy1.transform.position.x - transform.position.x) > 0 && _facingLeft2)
@@ -250,7 +211,7 @@ public class Leafy2 : Player2
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.gameObject.tag == "Leafy1")
+        if(coll.gameObject.tag == "Character1")
         {
             coll.GetComponent<Leafy1>().OnTakeDamage(10);
         }

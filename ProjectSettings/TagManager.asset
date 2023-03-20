@@ -9,6 +9,9 @@ TagManager:
   - Projectile
   - HealthBar1
   - HealthBar2
+  - Character1
+  - Character2
+  - Projectile1
   layers:
   - Default
   - TransparentFX
@@ -22,7 +25,7 @@ TagManager:
   - Character
   - Skill
   - Boundary
-  - 
+  - Projectile1
   - 
   - 
   - 
