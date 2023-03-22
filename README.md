@@ -1,4 +1,4 @@
-A SIMPLE FIGHTING GAME
+A SIMPLE FIGHTING GAME MADE BY UNITY ENGINE
 
 required to build this project:
 
